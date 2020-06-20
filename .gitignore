@@ -34,3 +34,5 @@ tests/_support/_generated
 
 #config
 config/db.php
+#log
+log/

@@ -1,0 +1,51 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+RewriteCond %{HTTP_HOST} www.remholod.pl.ua
+RewriteRule (.*) https://remholod.pl.ua/$1 [R=301,L]
+
+RewriteCond %{HTTP_USER_AGENT} AhrefsBot
+RewriteRule (.*) - [F,L]
+RewriteCond %{HTTP_USER_AGENT} ahrefsbot
+RewriteRule (.*) - [F,L]
+RewriteCond %{HTTP_USER_AGENT} Ahrefs
+RewriteRule (.*) - [F,L]
+RewriteCond %{HTTP_USER_AGENT} ahrefs
+RewriteRule (.*) - [F,L]
+RewriteCond %{HTTP_USER_AGENT} Qwantify
+RewriteRule (.*) - [F,L]
+RewriteCond %{HTTP_USER_AGENT} qwantify
+RewriteRule (.*) - [F,L]
+RewriteCond %{HTTP_USER_AGENT} qwant
+RewriteRule (.*) - [F,L]
+RewriteCond %{HTTP_USER_AGENT} SemrushBot
+RewriteRule (.*) - [F,L]
+RewriteCond %{HTTP_USER_AGENT} semrushbot
+RewriteRule (.*) - [F,L]
+RewriteCond %{HTTP_USER_AGENT} Semrush
+RewriteRule (.*) - [F,L]
+RewriteCond %{HTTP_USER_AGENT} semrush
+RewriteRule (.*) - [F,L]
+RewriteCond %{HTTP_USER_AGENT} DotBot
+RewriteRule (.*) - [F,L]
+RewriteCond %{HTTP_USER_AGENT} dotbot
+RewriteRule (.*) - [F,L]
+RewriteCond %{HTTP_USER_AGENT} MJ12bot
+RewriteRule (.*) - [F,L]
+RewriteCond %{HTTP_USER_AGENT} mj12bot
+RewriteRule (.*) - [F,L]
+
+RewriteCond %{REQUEST_URI} ^/.*
+RewriteCond %{REQUEST_URI} !^/\.well-known/cpanel-dcv/[0-9a-zA-Z_-]+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/(?:\ Ballot169)?
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteRule ^(.*)$ web/$1 [L]
+
+RewriteCond %{REQUEST_URI} !^/web/
+RewriteCond %{REQUEST_FILENAME} !-f [OR]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !^/\.well-known/cpanel-dcv/[0-9a-zA-Z_-]+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/(?:\ Ballot169)?
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteRule ^.*$ web/index.php
+</IfModule>
